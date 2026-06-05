@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>不规则动词 - Verbs Irregulars</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .header h1 {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .verb-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 30px 1fr;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .verb-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .verb-column {
+            text-align: center;
+        }
+
+        .verb-column .label {
+            font-size: 0.7em;
+            color: #999;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+
+        .verb-column .value {
+            font-size: 1em;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .verb-column .value.base {
+            color: #667eea;
+        }
+
+        .verb-column .value.past {
+            color: #e74c3c;
+        }
+
+        .verb-column .value.participle {
+            color: #27ae60;
+        }
+
+        .translations {
+            grid-column: 2;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 5px;
+            padding-top: 8px;
+            border-top: 1px solid #eee;
+        }
+
+        .translation {
+            font-size: 0.8em;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: #f8f9fa;
+        }
+
+        .translation.zh {
+            color: #e74c3c;
+        }
+
+        .translation.ca {
+            color: #f39c12;
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .print-btn:active {
+            transform: scale(0.95);
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                max-width: 100%;
+            }
+            
+            .header {
+                background: #667eea !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .verb-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+            
+            .number {
+                background: #667eea !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .print-btn {
+                display: none;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 600px;
+            }
+            
+            .verb-card {
+                padding: 18px;
+            }
+            
+            .verb-column .value {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📖 50个不规则动词</h1>
+            <p>Verbs Irregulars | 中文 | Català</p>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">1</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">go</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">went</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">gone</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">去</span>
+                <span class="translation ca">anar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">2</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">come</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">came</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">come</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">来</span>
+                <span class="translation ca">venir</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">3</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">see</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">saw</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">seen</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">看见</span>
+                <span class="translation ca">veure</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">4</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">do</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">did</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">done</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">做</span>
+                <span class="translation ca">fer</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">5</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">have</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">had</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">had</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">有</span>
+                <span class="translation ca">tenir</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">6</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">eat</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">ate</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">eaten</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">吃</span>
+                <span class="translation ca">menjar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">7</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">drink</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">drank</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">drunk</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">喝</span>
+                <span class="translation ca">beure</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">8</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">write</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">wrote</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">written</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">写</span>
+                <span class="translation ca">escriure</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">9</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">read</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">read</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">read</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">读</span>
+                <span class="translation ca">llegir</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">10</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">speak</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">spoke</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">spoken</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">说</span>
+                <span class="translation ca">parlar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">11</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">take</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">took</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">taken</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">拿</span>
+                <span class="translation ca">agafar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">12</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">give</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">gave</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">given</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">给</span>
+                <span class="translation ca">donar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">13</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">make</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">made</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">made</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">制作</span>
+                <span class="translation ca">fer / fabricar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">14</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">know</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">knew</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">known</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">知道</span>
+                <span class="translation ca">saber</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">15</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">think</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">thought</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">thought</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">想</span>
+                <span class="translation ca">pensar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">16</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">buy</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">bought</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">bought</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">买</span>
+                <span class="translation ca">comprar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">17</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">bring</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">brought</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">brought</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">带来</span>
+                <span class="translation ca">portar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">18</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">teach</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">taught</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">taught</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">教</span>
+                <span class="translation ca">ensenyar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">19</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">catch</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">caught</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">caught</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">抓住</span>
+                <span class="translation ca">atrapar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">20</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">feel</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">felt</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">felt</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">感觉</span>
+                <span class="translation ca">sentir</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">21</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">find</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">found</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">found</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">找到</span>
+                <span class="translation ca">trobar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">22</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">get</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">got</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">got</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">得到</span>
+                <span class="translation ca">obtenir</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">23</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">hear</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">heard</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">heard</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">听见</span>
+                <span class="translation ca">sentir / escoltar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">24</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">keep</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">kept</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">kept</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">保持</span>
+                <span class="translation ca">mantenir</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">25</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">leave</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">left</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">left</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">离开</span>
+                <span class="translation ca">marxar / deixar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">26</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">lose</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">lost</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">lost</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">丢失</span>
+                <span class="translation ca">perdre</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">27</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">meet</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">met</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">met</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">遇见</span>
+                <span class="translation ca">conèixer / trobar-se</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">28</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">pay</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">paid</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">paid</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">付钱</span>
+                <span class="translation ca">pagar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">29</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">run</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">ran</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">run</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">跑</span>
+                <span class="translation ca">córrer</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">30</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">say</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">said</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">said</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">说</span>
+                <span class="translation ca">dir</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">31</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">sell</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">sold</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">sold</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">卖</span>
+                <span class="translation ca">vendre</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">32</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">send</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">sent</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">sent</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">发送</span>
+                <span class="translation ca">enviar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">33</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">sit</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">sat</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">sat</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">坐</span>
+                <span class="translation ca">seure</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">34</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">sleep</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">slept</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">slept</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">睡觉</span>
+                <span class="translation ca">dormir</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">35</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">stand</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">stood</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">stood</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">站</span>
+                <span class="translation ca">estar dret</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">36</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">swim</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">swam</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">swum</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">游泳</span>
+                <span class="translation ca">nedar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">37</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">tell</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">told</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">told</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">告诉</span>
+                <span class="translation ca">explicar / dir</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">38</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">understand</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">understood</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">understood</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">明白</span>
+                <span class="translation ca">entendre</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">39</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">win</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">won</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">won</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">赢</span>
+                <span class="translation ca">guanyar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">40</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">break</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">broke</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">broken</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">打破</span>
+                <span class="translation ca">trencar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">41</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">choose</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">chose</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">chosen</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">选择</span>
+                <span class="translation ca">triar / escollir</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">42</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">drive</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">drove</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">driven</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">开车</span>
+                <span class="translation ca">conduir</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">43</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">fall</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">fell</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">fallen</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">跌倒</span>
+                <span class="translation ca">caure</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">44</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">fly</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">flew</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">flown</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">飞</span>
+                <span class="translation ca">volar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">45</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">forget</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">forgot</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">forgotten</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">忘记</span>
+                <span class="translation ca">oblidar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">46</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">grow</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">grew</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">grown</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">成长</span>
+                <span class="translation ca">créixer</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">47</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">hide</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">hid</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">hidden</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">躲藏</span>
+                <span class="translation ca">amagar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">48</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">hold</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">held</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">held</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">握住</span>
+                <span class="translation ca">agafar / sostenir</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">49</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">ring</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">rang</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">rung</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">响铃</span>
+                <span class="translation ca">sonar / trucar</span>
+            </div>
+        </div>
+
+        <div class="verb-card">
+            <div class="number">50</div>
+            <div class="verb-content">
+                <div class="verb-column"><div class="label">原形</div><div class="value base">wear</div></div>
+                <div class="verb-column"><div class="label">过去式</div><div class="value past">wore</div></div>
+                <div class="verb-column"><div class="label">过去分词</div><div class="value participle">worn</div></div>
+            </div>
+            <div class="translations">
+                <span class="translation zh">穿</span>
+                <span class="translation ca">portar (posat)</span>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="print-btn" onclick="window.print()">
+        🖨️
+    </button>
+
+</body>
+</html>
